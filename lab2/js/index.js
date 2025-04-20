@@ -1,6 +1,10 @@
+let storedLocalEvents = JSON.parse(localStorage.getItem('localEvents')) || [];
+
+
 fetch('events.json')
     .then(response => response.json())
     .then(events => {
+        events = [...events, ...storedLocalEvents]
         const eventGrid = document.querySelector('.event-grid');
 
         let i = 0;
@@ -125,12 +129,12 @@ function bookTickets(button) {
 }
 
 
-
 document.querySelector('.event-grid').addEventListener("click", function(event) {
     if (event.target && event.target.classList.contains("toggle-favorite-btn")) {
         toggleFavorite(event.target);
     }
 });
+
 
 function toggleFavorite(button) {
     const eventCard = button.closest('.event-card');
@@ -160,7 +164,6 @@ function toggleFavorite(button) {
 
     localStorage.setItem('favorites', JSON.stringify(favorites));
 }
-
 
 
 function getEventCardInfo(eventCard) {
@@ -195,14 +198,64 @@ function parseDate(dateStr){
 }
 
 
-document.getElementById('booking-form').addEventListener('submit', function(e) {
+// КНОПКА - відкриття модалки
+document.getElementById('create-event-btn').addEventListener('click', () => {
+    document.getElementById('create-event-modal').style.display = 'block';
+});
+
+// КНОПКА - закриття модалки
+document.querySelector('.close-create-modal').addEventListener('click', () => {
+    document.getElementById('create-event-modal').style.display = 'none';
+});
+
+// Закриття при кліку поза формою
+window.addEventListener('click', (e) => {
+    const modal = document.getElementById('create-event-modal');
+    if (e.target === modal) {
+        modal.style.display = 'none';
+    }
+});
+
+// Сабміт форми
+document.getElementById('create-event-form').addEventListener('submit', function(e) {
     e.preventDefault();
 
-    const name = document.getElementById('user-name').value.trim();
-    const email = document.getElementById('user-email').value.trim();
-    const tickets = parseInt(document.getElementById('ticket-count').value);
+    const title = document.getElementById('event-title').value.trim();
+    const date = document.getElementById('event-date').value.trim();
+    const place = document.getElementById('event-place').value.trim();
+    const price = parseInt(document.getElementById('event-price').value.trim());
+    const fileInput = document.getElementById('event-image');
+    const description = document.getElementById('event-description').value.trim();
 
-    if (!name || !email || tickets <= 0) {
-        alert('Будь ласка, заповніть всі поля правильно!');
+    if (!title || !date || !place || !price || fileInput.files.length === 0) {
+        alert("Будь ласка, заповніть всі обов'язкові поля.");
+        return;
     }
+
+    const file = fileInput.files[0];
+    const reader = new FileReader();
+
+    reader.onload = function(event) {
+        const imageDataURL = event.target.result;
+
+        const newEvent = {
+            title,
+            date,
+            place,
+            price,
+            image: imageDataURL,
+            description
+        };
+
+        let localEvents = JSON.parse(localStorage.getItem('localEvents')) || [];
+        localEvents.push(newEvent);
+        localStorage.setItem('localEvents', JSON.stringify(localEvents));
+
+        alert("Подію створено!");
+        document.getElementById('create-event-modal').style.display = 'none';
+        document.getElementById('create-event-form').reset();
+        location.reload();
+    };
+
+    reader.readAsDataURL(file);
 });

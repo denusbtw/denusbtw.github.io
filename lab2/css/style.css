@@ -380,3 +380,60 @@ footer {
     font-size: 24px;
     cursor: pointer;
 }
+
+.close-create-modal {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #ccc;
+    transition: color 0.3s ease;
+}
+
+.close-create-modal:hover {
+    color: #fff;
+}
+
+#create-event-form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+#create-event-form input,
+#create-event-form textarea {
+    background-color: #2b2b2b;
+    color: #fff;
+    border: 1px solid #444;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+#create-event-form input:focus,
+#create-event-form textarea:focus {
+    border-color: #7196c3;
+    outline: none;
+}
+
+#create-event-form textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+#create-event-form button[type="submit"] {
+    background-color: #7196c3;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#create-event-form button[type="submit"]:hover {
+    background-color: #5178a8;
+}

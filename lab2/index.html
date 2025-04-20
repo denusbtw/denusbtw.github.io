@@ -30,6 +30,27 @@
         </div>
 
     </section>
+
+    <section>
+        <button id="create-event-btn">Створити подію</button>
+    </section>
+
+    <!-- Модальне вікно для створення події -->
+    <div id="create-event-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-create-modal">&times;</span>
+            <h2>Нова подія</h2>
+            <form id="create-event-form">
+                <input type="text" id="event-title" placeholder="Назва події" required><br><br>
+                <input type="text" id="event-date" placeholder="Дата (наприклад: 25 квітня 2025)" required><br><br>
+                <input type="text" id="event-place" placeholder="Місце проведення" required><br><br>
+                <input type="number" id="event-price" placeholder="Ціна (грн)" required><br><br>
+                <input type="file" id="event-image" accept="image/*" required>
+                <textarea id="event-description" placeholder="Опис події"></textarea><br><br>
+                <button type="submit">Створити</button>
+            </form>
+        </div>
+    </div>
 </main>
 
 <footer>
