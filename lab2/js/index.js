@@ -1,78 +1,108 @@
-let storedLocalEvents = JSON.parse(localStorage.getItem('localEvents')) || [];
+function parseDate(dateStr) {
+    const months = {
+        'січня': 0, 'лютого': 1, 'березня': 2,
+        'квітня': 3, 'травня': 4, 'червня': 5,
+        'липня': 6, 'серпня': 7, 'вересня': 8,
+        'жовтня': 9, 'листопада': 10, 'грудня': 11
+    };
+    const parts = dateStr.split(' ');
+    const day = parseInt(parts[0]);
+    const month = months[parts[1]];
+    const year = parseInt(parts[2]);
+    return new Date(year, month, day);
+}
 
+function getEventCardInfo(eventCard) {
+    const eventImage = eventCard.querySelector('img').src;
+    const eventTitle = eventCard.querySelector('h2').innerText;
+    const eventDate = eventCard.querySelector('p:nth-child(3)').innerText.replace("Дата: ", "");
+    const eventPlace = eventCard.querySelector('p:nth-child(4)').innerText.replace("Місце: ", "");
+    const eventPrice = parseInt(eventCard.querySelector('p:nth-child(5)').innerText.replace('Ціна: ', '').replace(' грн', ''));
+    return { eventImage, eventTitle, eventDate, eventPlace, eventPrice };
+}
 
+// Ініціалізація подій
 fetch('events.json')
-    .then(response => response.json())
-    .then(events => {
-        events = [...events, ...storedLocalEvents]
-        const eventGrid = document.querySelector('.event-grid');
+    .then(res => res.json())
+    .then(serverEvents => {
+        let allEvents = JSON.parse(localStorage.getItem('allEvents'));
 
-        let i = 0;
-        while (i < events.length) {
-            const event = events[i];
-            const eventDate = parseDate(event.date);
-            const today = new Date();
-            i++;
+        if (!allEvents) {
+            const localEvents = JSON.parse(localStorage.getItem('localEvents')) || [];
 
-            if (eventDate <= today) continue;
+            serverEvents = serverEvents.map(ev => ({
+                ...ev,
+                availableTickets: ev.availableTickets || 200 // за замовчуванням
+            }));
 
-            const eventCard = document.createElement('article');
-            eventCard.classList.add('event-card');
-
-            const bookings = JSON.parse(localStorage.getItem('bookings')) || [];
-            const isBooked = bookings.some(booking => booking.title === event.title && booking.date === event.date);
-
-            eventCard.innerHTML = `
-                <img src="${event.image}" alt="${event.title}">
-                <h2>${event.title}</h2>
-                <p>Дата: ${event.date}</p>
-                <p>Місце: ${event.place}</p>
-                <p>Ціна: ${event.price} грн</p>
-            `;
-
-            const bookButton = document.createElement('button');
-            bookButton.classList.add('book-btn');
-            bookButton.innerText = isBooked ? 'Заброньовано' : 'Забронювати';
-            if (isBooked) {
-                bookButton.disabled = true;
-                bookButton.style.backgroundColor = '#999';
-                bookButton.style.cursor = 'not-allowed';
-            }
-            eventCard.appendChild(bookButton);
-
-            const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-            const isFavorite = favorites.some(fav => fav.title === event.title && fav.date === event.date);
-
-            const toggleFavoriteButton = document.createElement('button');
-            toggleFavoriteButton.classList.add('toggle-favorite-btn');
-            toggleFavoriteButton.innerText = isFavorite ? 'Видалити з улюбленого' : 'Додати до улюблених';
-            eventCard.appendChild(toggleFavoriteButton);
-
-            // Обробка кліку по картці — відкриває модалку (крім кнопок)
-            eventCard.addEventListener('click', (e) => {
-                if (e.target.tagName.toLowerCase() === 'button') return;
-                openModal(event);
-            });
-
-            if (event.price > 500) {
-                eventCard.style.backgroundColor = '#604b4b';
-            }
-
-            eventGrid.appendChild(eventCard);
+            allEvents = [...serverEvents, ...localEvents];
+            localStorage.setItem('allEvents', JSON.stringify(allEvents));
         }
-    })
-    .catch(error => console.error('Error loading events:', error));
 
+        renderEvents(allEvents);
+    });
+
+function renderEvents(events) {
+    const eventGrid = document.querySelector('.event-grid');
+    const today = new Date();
+
+    events.forEach(event => {
+        const eventDate = parseDate(event.date);
+        if (eventDate <= today) return;
+
+        const eventCard = document.createElement('article');
+        eventCard.classList.add('event-card');
+
+        const bookings = JSON.parse(localStorage.getItem('bookings')) || [];
+        const isBooked = bookings.some(booking => booking.title === event.title && booking.date === event.date);
+
+        eventCard.innerHTML = `
+            <img src="${event.image}" alt="${event.title}">
+            <h2>${event.title}</h2>
+            <p>Дата: ${event.date}</p>
+            <p>Місце: ${event.place}</p>
+            <p>Ціна: ${event.price} грн</p>
+            <p class="available-tickets">Вільно: ${event.availableTickets ?? '—'}</p>
+        `;
+
+        const bookButton = document.createElement('button');
+        bookButton.classList.add('book-btn');
+        bookButton.innerText = isBooked ? 'Заброньовано' : 'Забронювати';
+        if (isBooked) {
+            bookButton.disabled = true;
+            bookButton.style.backgroundColor = '#999';
+            bookButton.style.cursor = 'not-allowed';
+        }
+        eventCard.appendChild(bookButton);
+
+        const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+        const isFavorite = favorites.some(fav => fav.title === event.title && fav.date === event.date);
+
+        const toggleFavoriteButton = document.createElement('button');
+        toggleFavoriteButton.classList.add('toggle-favorite-btn');
+        toggleFavoriteButton.innerText = isFavorite ? 'Видалити з улюбленого' : 'Додати до улюблених';
+        eventCard.appendChild(toggleFavoriteButton);
+
+        eventCard.addEventListener('click', (e) => {
+            if (e.target.tagName.toLowerCase() === 'button') return;
+            openModal(event);
+        });
+
+        if (event.price > 500) {
+            eventCard.style.backgroundColor = '#604b4b';
+        }
+
+        eventGrid.appendChild(eventCard);
+    });
+}
 
 function openModal(eventData) {
     document.getElementById('modal-image').src = eventData.image;
-    document.getElementById('modal-image').alt = eventData.title;
     document.getElementById('modal-title').innerText = eventData.title;
     document.getElementById('modal-date').innerText = "Дата: " + eventData.date;
     document.getElementById('modal-place').innerText = "Місце: " + eventData.place;
     document.getElementById('modal-price').innerText = "Ціна: " + eventData.price + " грн";
     document.getElementById('modal-description').innerText = eventData.description || "Опис відсутній";
-
     document.getElementById('event-modal').style.display = 'block';
 }
 
@@ -80,68 +110,74 @@ document.querySelector('.close-modal').addEventListener('click', () => {
     document.getElementById('event-modal').style.display = 'none';
 });
 
-window.addEventListener('click', (event) => {
+window.addEventListener('click', (e) => {
     const modal = document.getElementById('event-modal');
-    if (event.target === modal) {
-        modal.style.display = 'none';
-    }
+    if (e.target === modal) modal.style.display = 'none';
 });
 
-
-
-document.querySelector('.event-grid').addEventListener("click", function(event) {
-    if (event.target && event.target.classList.contains("book-btn")) {
+document.querySelector('.event-grid').addEventListener("click", (event) => {
+    if (event.target.classList.contains("book-btn")) {
         bookTickets(event.target);
     }
+    if (event.target.classList.contains("toggle-favorite-btn")) {
+        toggleFavorite(event.target);
+    }
 });
-
 
 function bookTickets(button) {
     const eventCard = button.closest('.event-card');
     const { eventImage, eventTitle, eventDate, eventPlace, eventPrice } = getEventCardInfo(eventCard);
 
-    const tickets = prompt("Введіть кількість квитків:");
+    const tickets = parseInt(prompt("Введіть кількість квитків:"));
+    if (!tickets || tickets <= 0) return alert("Кількість квитків має бути більшою за 0.");
 
-    if (tickets && tickets > 0) {
-        const totalPrice = eventPrice * tickets;
-        alert(`Ви забронювали ${tickets} квитків. Загальна сума: ${totalPrice} грн.`);
+    let allEvents = JSON.parse(localStorage.getItem('allEvents')) || [];
+    const eventIndex = allEvents.findIndex(ev => ev.title === eventTitle && ev.date === eventDate);
 
-        const bookingDetails = {
-            image: eventImage,
-            title: eventTitle,
-            date: eventDate,
-            place: eventPlace,
-            tickets: tickets,
-            totalAmount: totalPrice
-        };
+    if (eventIndex !== -1) {
+        const available = allEvents[eventIndex].availableTickets;
+        if (available < tickets) {
+            alert(`Недостатньо квитків! Залишилось: ${available}`);
+            return;
+        }
 
-        let bookings = JSON.parse(localStorage.getItem('bookings')) || [];
-        bookings.push(bookingDetails);
-        localStorage.setItem('bookings', JSON.stringify(bookings));
-
-        button.innerText = 'Заброньовано';
-        button.disabled = true;
-        button.style.backgroundColor = '#999';
-        button.style.cursor = 'not-allowed';
-    } else {
-        alert("Кількість квитків має бути більшою за 0.");
+        allEvents[eventIndex].availableTickets -= tickets;
+        localStorage.setItem('allEvents', JSON.stringify(allEvents));
     }
+
+    const availableText = eventCard.querySelector('.available-tickets');
+    if (availableText) {
+        availableText.textContent = `Вільно: ${parseInt(availableText.textContent.replace('Вільно: ', '')) - tickets}`;
+    }
+
+    const totalPrice = eventPrice * tickets;
+    alert(`Ви забронювали ${tickets} квитків. Загальна сума: ${totalPrice} грн.`);
+
+    const bookingDetails = {
+        image: eventImage,
+        title: eventTitle,
+        date: eventDate,
+        place: eventPlace,
+        tickets,
+        totalAmount: totalPrice,
+        pricePerTicket: eventPrice
+    };
+
+    const bookings = JSON.parse(localStorage.getItem('bookings')) || [];
+    bookings.push(bookingDetails);
+    localStorage.setItem('bookings', JSON.stringify(bookings));
+
+    button.innerText = 'Заброньовано';
+    button.disabled = true;
+    button.style.backgroundColor = '#999';
+    button.style.cursor = 'not-allowed';
 }
-
-
-document.querySelector('.event-grid').addEventListener("click", function(event) {
-    if (event.target && event.target.classList.contains("toggle-favorite-btn")) {
-        toggleFavorite(event.target);
-    }
-});
-
 
 function toggleFavorite(button) {
     const eventCard = button.closest('.event-card');
     const { eventImage, eventTitle, eventDate, eventPlace, eventPrice } = getEventCardInfo(eventCard);
 
     let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-
     const eventIndex = favorites.findIndex(fav => fav.title === eventTitle && fav.date === eventDate);
 
     if (eventIndex > -1) {
@@ -149,15 +185,7 @@ function toggleFavorite(button) {
         button.innerText = 'Додати до улюблених';
         alert(`Ви видалили подію з улюбленого.`);
     } else {
-        const favoriteDetails = {
-            image: eventImage,
-            title: eventTitle,
-            date: eventDate,
-            place: eventPlace,
-            price: eventPrice,
-        };
-
-        favorites.push(favoriteDetails);
+        favorites.push({ image: eventImage, title: eventTitle, date: eventDate, place: eventPlace, price: eventPrice });
         button.innerText = 'Видалити з улюбленого';
         alert(`Ви додали подію до улюблених.`);
     }
@@ -165,69 +193,30 @@ function toggleFavorite(button) {
     localStorage.setItem('favorites', JSON.stringify(favorites));
 }
 
-
-function getEventCardInfo(eventCard) {
-    const eventImage = eventCard.querySelector('img').src;
-    const eventTitle = eventCard.querySelector('h2').innerText;
-    const eventDate = eventCard.querySelector('p:nth-child(3)').innerText.replace("Дата: ", "");
-    const eventPlace = eventCard.querySelector('p:nth-child(4)').innerText.replace("Місце: ", "");
-    const eventPrice = parseInt(
-        eventCard.querySelector('p:nth-child(5)')
-            .innerText.replace('Ціна: ', '')
-            .replace(' грн', '')
-    );
-
-    return { eventImage, eventTitle, eventDate, eventPlace, eventPrice };
-}
-
-
-function parseDate(dateStr){
-    const months = {
-        'січня': 0, 'лютого': 1, 'березня': 2,
-        'квітня': 3, 'травня': 4, 'червня': 5,
-        'липня': 6, 'серпня': 7, 'вересня': 8,
-        'жовтня': 9, 'листопада': 10, 'грудня': 11
-    };
-
-    const parts = dateStr.split(' ');
-    const day = parseInt(parts[0]);
-    const month = months[parts[1]];
-    const year = parseInt(parts[2]);
-
-    return new Date(year, month, day);
-}
-
-
-// КНОПКА - відкриття модалки
+// MODAL: Створення події
 document.getElementById('create-event-btn').addEventListener('click', () => {
     document.getElementById('create-event-modal').style.display = 'block';
 });
-
-// КНОПКА - закриття модалки
 document.querySelector('.close-create-modal').addEventListener('click', () => {
     document.getElementById('create-event-modal').style.display = 'none';
 });
-
-// Закриття при кліку поза формою
 window.addEventListener('click', (e) => {
     const modal = document.getElementById('create-event-modal');
-    if (e.target === modal) {
-        modal.style.display = 'none';
-    }
+    if (e.target === modal) modal.style.display = 'none';
 });
 
-// Сабміт форми
-document.getElementById('create-event-form').addEventListener('submit', function(e) {
+document.getElementById('create-event-form').addEventListener('submit', function (e) {
     e.preventDefault();
 
     const title = document.getElementById('event-title').value.trim();
     const date = document.getElementById('event-date').value.trim();
     const place = document.getElementById('event-place').value.trim();
     const price = parseInt(document.getElementById('event-price').value.trim());
+    const tickets = parseInt(document.getElementById('event-tickets').value.trim());
     const fileInput = document.getElementById('event-image');
     const description = document.getElementById('event-description').value.trim();
 
-    if (!title || !date || !place || !price || fileInput.files.length === 0) {
+    if (!title || !date || !place || !price || !tickets || fileInput.files.length === 0) {
         alert("Будь ласка, заповніть всі обов'язкові поля.");
         return;
     }
@@ -235,21 +224,21 @@ document.getElementById('create-event-form').addEventListener('submit', function
     const file = fileInput.files[0];
     const reader = new FileReader();
 
-    reader.onload = function(event) {
+    reader.onload = function (event) {
         const imageDataURL = event.target.result;
-
         const newEvent = {
             title,
             date,
             place,
             price,
             image: imageDataURL,
-            description
+            description,
+            availableTickets: tickets
         };
 
-        let localEvents = JSON.parse(localStorage.getItem('localEvents')) || [];
-        localEvents.push(newEvent);
-        localStorage.setItem('localEvents', JSON.stringify(localEvents));
+        let allEvents = JSON.parse(localStorage.getItem('allEvents')) || [];
+        allEvents.push(newEvent);
+        localStorage.setItem('allEvents', JSON.stringify(allEvents));
 
         alert("Подію створено!");
         document.getElementById('create-event-modal').style.display = 'none';
