@@ -1,17 +1,3 @@
-function parseDate(dateStr) {
-    const months = {
-        'січня': 0, 'лютого': 1, 'березня': 2,
-        'квітня': 3, 'травня': 4, 'червня': 5,
-        'липня': 6, 'серпня': 7, 'вересня': 8,
-        'жовтня': 9, 'листопада': 10, 'грудня': 11
-    };
-    const parts = dateStr.split(' ');
-    const day = parseInt(parts[0]);
-    const month = months[parts[1]];
-    const year = parseInt(parts[2]);
-    return new Date(year, month, day);
-}
-
 function getEventCardInfo(eventCard) {
     const eventImage = eventCard.querySelector('img').src;
     const eventTitle = eventCard.querySelector('h2').innerText;
@@ -248,3 +234,19 @@ document.getElementById('create-event-form').addEventListener('submit', function
 
     reader.readAsDataURL(file);
 });
+
+
+function parseDate(dateStr) {
+    const months = {
+        'січня': 0, 'лютого': 1, 'березня': 2,
+        'квітня': 3, 'травня': 4, 'червня': 5,
+        'липня': 6, 'серпня': 7, 'вересня': 8,
+        'жовтня': 9, 'листопада': 10, 'грудня': 11
+    };
+
+    const parts = dateStr.split(' ');
+    const day = parseInt(parts[0]);
+    const month = months[parts[1]];
+    const year = parseInt(parts[2]);
+    return new Date(year, month, day);
+}
