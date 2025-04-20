@@ -437,3 +437,39 @@ footer {
 #create-event-form button[type="submit"]:hover {
     background-color: #5178a8;
 }
+
+.events-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+#create-event-btn {
+    background-color: #7196c3;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#create-event-btn:hover {
+    background-color: #5178a8;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 600px) {
+    .events-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    #create-event-btn {
+        width: 100%;
+    }
+}
