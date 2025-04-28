@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import './styles/style.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
+import EventsPage from './pages/EventsPage';
+import BookingsPage from './pages/BookingsPage';
+import FavoritesPage from './pages/FavoritesPage';
+import PastEventsPage from "./pages/PastEventsPage";
+import AboutPage from "./pages/AboutPage";
+// + можна додати ще інші сторінки потім: BookingsPage, FavoritesPage, AboutPage
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <Router>
+            <Navbar />
+            <Routes>
+                <Route path="/" element={<EventsPage />} />
+                 <Route path="/past-events" element={<PastEventsPage />} />
+                 <Route path="/bookings" element={<BookingsPage />} />
+                 <Route path="/favorites" element={<FavoritesPage />} />
+                 <Route path="/about" element={<AboutPage />} />
+            </Routes>
+            <Footer />
+        </Router>
+    );
 }
 
 export default App;
