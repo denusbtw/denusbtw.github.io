@@ -44,7 +44,7 @@ function CreateEventModal({ onClose, onCreate }) {
     };
 
     return (
-        <div className="modal" style={{ display: 'block' }}>
+        <div className="modal">
             <div className="modal-content">
         <span className="close-create-modal" onClick={onClose}>
           &times;
