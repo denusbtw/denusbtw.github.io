@@ -78,6 +78,11 @@ function renderEvents(events) {
             eventCard.style.backgroundColor = '#604b4b';
         }
 
+        const availableText = eventCard.querySelector('.available-tickets');
+        if (availableText) {
+            updateAvailableTicketsColor(availableText);
+        }
+
         eventGrid.appendChild(eventCard);
     });
 }
@@ -234,6 +239,18 @@ document.getElementById('create-event-form').addEventListener('submit', function
 
     reader.readAsDataURL(file);
 });
+
+
+function updateAvailableTicketsColor(availableTextElement) {
+    const tickets = parseInt(availableTextElement.textContent.replace('Вільно: ', ''));
+    if (tickets > 100) {
+        availableTextElement.style.color = 'green';
+    } else if (tickets > 20) {
+        availableTextElement.style.color = 'orange';
+    } else {
+        availableTextElement.style.color = 'red';
+    }
+}
 
 
 function parseDate(dateStr) {
