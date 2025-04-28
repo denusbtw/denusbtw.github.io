@@ -1,0 +1,49 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"AutoImportSettings\">\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"3cc2f68e-2bf8-4c9a-916f-a393104b0a69\" name=\"Changes\" comment=\"\">\n      <change beforePath=\"$PROJECT_DIR$/../lab1/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/../lab1/.idea/workspace.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/../lab1/.~lock.лаб_1.docx#\" beforeDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/../lab1/about.html\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/../lab1/about.html\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/../lab1/bookings.html\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/../lab1/bookings.html\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/../lab1/css/style.css\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/../lab1/css/style.css\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/../lab1/index.html\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/../lab1/index.html\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/../lab1/лаб_1.docx\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/../lab1/лаб_1.docx\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"FileTemplateManagerImpl\">\n    <option name=\"RECENT_TEMPLATES\">\n      <list>\n        <option value=\"CSS File\" />\n        <option value=\"HTML File\" />\n        <option value=\"JavaScript File\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$/..\" />\n  </component>\n  <component name=\"ProjectColorInfo\">{\n  &quot;associatedIndex&quot;: 1\n}</component>\n  <component name=\"ProjectId\" id=\"2tfibo6AkC59xyWZSVfrTrR3eTH\" />\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\">{\n  &quot;keyToString&quot;: {\n    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\n    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,\n    &quot;git-widget-placeholder&quot;: &quot;main&quot;,\n    &quot;last_opened_file_path&quot;: &quot;/home/denusbtw/university/y2/s2/web/denusbtw.github.io/lab2&quot;,\n    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,\n    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,\n    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,\n    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,\n    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,\n    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,\n    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,\n    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;\n  }\n}</component>\n  <component name=\"RecentsManager\">\n    <key name=\"CopyFile.RECENT_KEYS\">\n      <recent name=\"$PROJECT_DIR$\" />\n    </key>\n    <key name=\"MoveFile.RECENT_KEYS\">\n      <recent name=\"$PROJECT_DIR$\" />\n      <recent name=\"$PROJECT_DIR$/js\" />\n      <recent name=\"$PROJECT_DIR$/assets/css\" />\n    </key>\n  </component>\n  <component name=\"SharedIndexes\">\n    <attachedChunks>\n      <set>\n        <option value=\"bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-WS-243.26053.12\" />\n      </set>\n    </attachedChunks>\n  </component>\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"3cc2f68e-2bf8-4c9a-916f-a393104b0a69\" name=\"Changes\" comment=\"\" />\n      <created>1740749604128</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1740749604128</updated>\n      <workItem from=\"1740749605134\" duration=\"1002000\" />\n      <workItem from=\"1740752309071\" duration=\"14627000\" />\n      <workItem from=\"1740856153692\" duration=\"1824000\" />\n      <workItem from=\"1741208451805\" duration=\"2893000\" />\n      <workItem from=\"1741246696233\" duration=\"591000\" />\n      <workItem from=\"1742714910033\" duration=\"2505000\" />\n      <workItem from=\"1742717881197\" duration=\"1231000\" />\n      <workItem from=\"1742720411648\" duration=\"2000\" />\n      <workItem from=\"1742720543832\" duration=\"12000\" />\n      <workItem from=\"1742720563003\" duration=\"2000\" />\n      <workItem from=\"1742720573680\" duration=\"3000\" />\n      <workItem from=\"1742720612609\" duration=\"5000\" />\n      <workItem from=\"1742880088169\" duration=\"1437000\" />\n      <workItem from=\"1743228879815\" duration=\"6811000\" />\n      <workItem from=\"1744041287332\" duration=\"3088000\" />\n      <workItem from=\"1744044764351\" duration=\"987000\" />\n      <workItem from=\"1744045782914\" duration=\"1275000\" />\n      <workItem from=\"1744084029258\" duration=\"650000\" />\n    </task>\n    <servers />\n  </component>\n  <component name=\"TypeScriptGeneratedFilesManager\">\n    <option name=\"version\" value=\"3\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 4edd8a5633d5497251d332935d6221643079c5ff)
++++ b/.idea/workspace.xml	(date 1745818173267)
+@@ -6,11 +6,6 @@
+   <component name="ChangeListManager">
+     <list default="true" id="3cc2f68e-2bf8-4c9a-916f-a393104b0a69" name="Changes" comment="">
+       <change beforePath="$PROJECT_DIR$/../lab1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../lab1/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/../lab1/.~lock.лаб_1.docx#" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/../lab1/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/../lab1/about.html" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/../lab1/bookings.html" beforeDir="false" afterPath="$PROJECT_DIR$/../lab1/bookings.html" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/../lab1/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/../lab1/css/style.css" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/../lab1/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../lab1/index.html" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/../lab1/лаб_1.docx" beforeDir="false" afterPath="$PROJECT_DIR$/../lab1/лаб_1.docx" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+@@ -34,6 +29,9 @@
+   &quot;associatedIndex&quot;: 1
+ }</component>
+   <component name="ProjectId" id="2tfibo6AkC59xyWZSVfrTrR3eTH" />
++  <component name="ProjectLevelVcsManager">
++    <ConfirmationsSetting value="1" id="Add" />
++  </component>
+   <component name="ProjectViewState">
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+@@ -104,4 +102,15 @@
+   <component name="TypeScriptGeneratedFilesManager">
+     <option name="version" value="3" />
+   </component>
++  <component name="Vcs.Log.Tabs.Properties">
++    <option name="TAB_STATES">
++      <map>
++        <entry key="MAIN">
++          <value>
++            <State />
++          </value>
++        </entry>
++      </map>
++    </option>
++  </component>
+ </project>
+\ No newline at end of file
