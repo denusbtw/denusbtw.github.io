@@ -13,7 +13,7 @@ function BookingModal({ event, onClose, onConfirm }) {
     };
 
     return (
-        <div className="modal" style={{ display: 'block' }}>
+        <div className="modal">
             <div className="modal-content">
                 <span className="close-create-modal" onClick={onClose}>&times;</span>
                 <h2>Бронювання: {event.title}</h2>

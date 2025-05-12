@@ -8,7 +8,6 @@ import BookingsPage from './pages/BookingsPage';
 import FavoritesPage from './pages/FavoritesPage';
 import PastEventsPage from "./pages/PastEventsPage";
 import AboutPage from "./pages/AboutPage";
-// + можна додати ще інші сторінки потім: BookingsPage, FavoritesPage, AboutPage
 
 function App() {
     return (

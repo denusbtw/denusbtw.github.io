@@ -8,12 +8,10 @@
       <change beforePath="$PROJECT_DIR$/../lab1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../lab1/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../lab1/лаб_1.docx" beforeDir="false" afterPath="$PROJECT_DIR$/../lab1/лаб_1.docx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/about.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bookings.html" beforeDir="false" afterPath="$PROJECT_DIR$/bookings.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/favorites.html" beforeDir="false" afterPath="$PROJECT_DIR$/favorites.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/past-events.html" beforeDir="false" afterPath="$PROJECT_DIR$/past-events.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.~lock.лаб2_звіт.docx#" beforeDir="false" afterPath="$PROJECT_DIR$/.~lock.лаб2_звіт.docx#" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/лаб2_звіт.docx" beforeDir="false" afterPath="$PROJECT_DIR$/лаб2_звіт.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab3/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab3/src/components/BookingModal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3/src/components/BookingModal.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,8 +28,25 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/.." value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;denusbtw&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/denusbtw/denusbtw.github.io&quot;,
+    &quot;accountId&quot;: &quot;8e37d365-492b-4789-9d4a-7dcd78ba4eb7&quot;
+  }
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
 }</component>
@@ -43,23 +58,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;feature/create-form&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/denusbtw/my-react-app&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/home/denusbtw/university/y2/s2/web/denusbtw.github.io/lab3",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
@@ -106,10 +121,39 @@
       <workItem from="1745136262026" duration="6711000" />
       <workItem from="1745146584220" duration="10000" />
       <workItem from="1745815726392" duration="1055000" />
+      <workItem from="1745820329544" duration="125000" />
+      <workItem from="1745822769990" duration="63000" />
+      <workItem from="1745823140920" duration="3000" />
+      <workItem from="1745823156744" duration="3000" />
+      <workItem from="1745823532441" duration="4000" />
+      <workItem from="1745823671753" duration="6000" />
+      <workItem from="1745823683413" duration="12000" />
+      <workItem from="1745823890347" duration="27000" />
+      <workItem from="1745824250022" duration="26000" />
+      <workItem from="1745824596594" duration="470000" />
+      <workItem from="1745825116847" duration="231000" />
+      <workItem from="1745908300771" duration="202000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="main" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
